@@ -12,9 +12,20 @@ module.exports.initialize = (queue) => {
   messageQueue = queue;
 };
 
+const moves = ['up', 'down', 'left', 'right'];
+
 module.exports.router = (req, res, next = ()=>{}) => {
   console.log('Serving request type ' + req.method + ' for url ' + req.url);
+
+  // give me random el
+
+  let move = moves[Math.floor(Math.random() * Math.floor(4))];
+
+
+
+
+
   res.writeHead(200, headers);
-  res.end();
+  res.end(move);
   next(); // invoke next() at the end of a request to help with testing!
 };

@@ -4,6 +4,15 @@
 
   //
   // TODO: build the swim command fetcher here
+  const ajaxFetchHandler = () => {
+    $.ajax({
+      type: 'GET',
+      url: serverUrl,
+      success: (data, response) => {
+        SwimTeam.move(data);
+      }
+    });
+  };
   //
 
   /////////////////////////////////////////////////////////////////////
@@ -45,5 +54,5 @@
 
     ajaxFileUplaod(file);
   });
-
+  setInterval(() => ajaxFetchHandler(), 100);
 })();

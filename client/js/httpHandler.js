@@ -17,6 +17,7 @@
   };
   //
 
+
   /////////////////////////////////////////////////////////////////////
   // The ajax file uplaoder is provided for your convenience!
   // Note: remember to fix the URL below.
@@ -28,7 +29,7 @@
     $.ajax({
       type: 'POST',
       data: formData,
-      url: 'FILL_ME_IN',
+      url: serverUrl,
       cache: false,
       contentType: false,
       processData: false,
@@ -56,5 +57,5 @@
 
     ajaxFileUplaod(file);
   });
-  setInterval(() => ajaxFetchHandler(), 1500);
+  setInterval(() => ajaxFetchHandler(), 500);
 })();

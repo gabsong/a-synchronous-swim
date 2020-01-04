@@ -10,6 +10,9 @@ const httpHandler = require('./js/httpHandler');
 
 httpHandler.initialize(messageQueue);
 
+// file path for bg
+// httpHandler.backgroundImageFile
+
 const http = require('http');
 const server = http.createServer(httpHandler.router);
 

@@ -9,7 +9,9 @@
       type: 'GET',
       url: serverUrl,
       success: (data, response) => {
-        SwimTeam.move(data);
+        if (data) {
+          SwimTeam.move(data);
+        }
       }
     });
   };
@@ -54,5 +56,5 @@
 
     ajaxFileUplaod(file);
   });
-  setInterval(() => ajaxFetchHandler(), 100);
+  setInterval(() => ajaxFetchHandler(), 1500);
 })();

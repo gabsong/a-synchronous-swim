@@ -14,9 +14,10 @@ module.exports.initialize = (queue) => {
 
 module.exports.router = (req, res, next = ()=>{}) => {
   console.log('Serving request type ' + req.method + ' for url ' + req.url);
-
+  // console.log('request:', req);
   if (req.method === 'OPTIONS' && req.url === '/') {
     res.writeHead(200, headers);
+    // console.log('response:', res);
     res.end();
   }
 
@@ -26,23 +27,24 @@ module.exports.router = (req, res, next = ()=>{}) => {
       res.end();
     } else {
       res.writeHead(200, headers);
-      // res.write(messageQueue.dequeue());
+      // console.log('response:', res);
       res.end(messageQueue.dequeue());
     }
   }
 
-  if (req.method === 'GET' && req.url === '/bg') {
-    // if missing background image
-    // console.log(module.exports.backgroundImageFile);
-    // console.log(backgroundImageFile);
-    // console.log(this.backgroundImageFile);
+  if (req.method === 'GET' && req.url === '/background.jpg') {
+    if (fs.existsSync(module.exports.backgroundImageFile)) {
+      res.writeHead(200, headers);
+      const bg = fs.createReadStream(module.exports.backgroundImageFile);
 
-    if (!fs.stat(module.exports.backgroundImageFile)) {
+      bg.on('open', () => {
+        // find out what pipe does...
+        bg.pipe(res);
+      });
+
+    } else {
       res.writeHead(404, headers);
       res.end();
-    } else {
-      res.writeHead(200, headers);
-      res.end()
     }
   }
 

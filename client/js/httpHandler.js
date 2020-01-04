@@ -4,6 +4,7 @@
 
   //
   // TODO: build the swim command fetcher here
+  //
   const ajaxFetchHandler = () => {
     $.ajax({
       type: 'GET',
@@ -15,8 +16,20 @@
       }
     });
   };
-  //
 
+  // build the ajax GET file
+  // declare function, no arguments
+  // const ajaxGetFile = () => {
+  //   $.ajax({
+  //     type: 'GET',
+  //     url: serverUrl + '/bg',
+  //     success: (data, response) => {
+  //       console.log('data:', data, 'response:', response);
+  //     }
+  //   });
+  // }
+    // ajax call type GET
+    // on success, load background file
 
   /////////////////////////////////////////////////////////////////////
   // The ajax file uplaoder is provided for your convenience!
@@ -57,5 +70,5 @@
 
     ajaxFileUplaod(file);
   });
-  setInterval(() => ajaxFetchHandler(), 500);
+  setInterval(() => ajaxFetchHandler(), 1000);
 })();
